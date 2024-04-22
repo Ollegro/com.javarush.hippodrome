@@ -5,17 +5,21 @@ import java.util.List;
 import static java.util.Objects.isNull;
 
 public class Hippodrome {
-
-    private final List<Horse> horses;
+       private final List<Horse> horses;
 
     public Hippodrome(List<Horse> horses) {
         if (isNull(horses)) {
+            Main.logger.error("Horse cannot be null");
             throw new IllegalArgumentException("Horses cannot be null.");
+
+
         } else if (horses.isEmpty()) {
+            Main.logger.error("Horses list is empty");
             throw new IllegalArgumentException("Horses cannot be empty.");
         }
 
         this.horses = horses;
+        Main.logger.debug("Создание Hippodrome, лошадей [{}]", horses.size());
     }
 
     public List<Horse> getHorses() {
